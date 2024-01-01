@@ -1,7 +1,9 @@
 package com.logisticsSystem.logisticApp.data.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -10,7 +12,8 @@ import java.util.List;
 
 @Data
 @Entity
-
+@RequiredArgsConstructor
+@AllArgsConstructor
 public class AppUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +27,7 @@ public class AppUser {
     private LocalDateTime createdDate;
     @Enumerated(EnumType.STRING)
     private AppUserType appUserType;
+
 
 
 

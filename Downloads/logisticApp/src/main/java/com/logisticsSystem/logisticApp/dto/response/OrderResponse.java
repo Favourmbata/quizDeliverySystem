@@ -1,7 +1,6 @@
 package com.logisticsSystem.logisticApp.dto.response;
 
-import com.logisticsSystem.logisticApp.data.model.AppUser;
-import com.logisticsSystem.logisticApp.data.model.Product;
+import com.logisticsSystem.logisticApp.data.model.*;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -13,11 +12,10 @@ import java.util.List;
 @Setter
 @RequiredArgsConstructor
 public class OrderResponse {
-    public List<Product> listOfProducts = new ArrayList<>();
-    private  int riderNumber;
-    private double paymentReceipt;
 
-    private AppUser customer;
-    private AppUser dispatch_Rider;
+    private String productNameQ;
+    private String customerEmail;
+    private long pickUpAddressId;
+    private long deliveryAddressId;
 
 }

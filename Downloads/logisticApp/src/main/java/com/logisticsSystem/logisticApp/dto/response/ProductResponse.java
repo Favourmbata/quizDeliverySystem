@@ -1,5 +1,6 @@
 package com.logisticsSystem.logisticApp.dto.response;
 
+import com.logisticsSystem.logisticApp.data.model.AddressT;
 import com.logisticsSystem.logisticApp.data.model.AppUser;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -14,4 +15,6 @@ public class ProductResponse {
         private  String ProductName;
         private int quantity;
         private long product_Price;
+        private AddressT deliveryAddress;
+        private AddressT pick_upAddress;
 }

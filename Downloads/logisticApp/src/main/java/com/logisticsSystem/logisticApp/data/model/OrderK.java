@@ -1,33 +1,31 @@
 package com.logisticsSystem.logisticApp.data.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Setter
 @Getter
 @RequiredArgsConstructor
+@AllArgsConstructor
 @Entity
 public class OrderK {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    public final List <Product> listOfProducts = new ArrayList<>();
-
-    private  int riderNumber;
-
-    private double paymentReceipt;
-
     @ManyToOne
-    private AppUser customer;
-
+    private Product product;
     @ManyToOne
-    private AppUser dispatch_Rider;
-
+    private  AppUser customer;
+    @ManyToOne
+    private  AddressT pickUpAddress;
+    @ManyToOne
+    private AddressT deliveryAddress;
+    private LocalDateTime dateCreated;
 }
