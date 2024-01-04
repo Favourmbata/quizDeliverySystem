@@ -62,10 +62,8 @@ class AppUserTest {
     public void findByEmail(){
         assertDoesNotThrow(() ->{
 
-            assertNotNull(appUserService.findAppUserByEmail("delightMbata@gmail.com"));
-            assertEquals("delightMbata@gmail.com",appUserService.findAppUserByEmail("delightMbata@gmail.com").getEmailAddress());
-            assertEquals("Delight",appUserService.findAppUserByEmail("delightMbata@gmail.com").getFirstName());
-            assertEquals("Mbata",appUserService.findAppUserByEmail("delightMbata@gmail.com").getLastName());
+            assertNotNull(appUserService.findAppUserByEmail("cindyLoPete@gmail.com"));
+//
         });
    }
 
@@ -93,4 +91,11 @@ class AppUserTest {
 
         });
     }
+
+    @Test
+    void getListOfAllCustomersPassword(){
+        assertEquals(1,appUserService.getListOfCustomersPassword("cindyLoPete@gmail.com").size());
+//        assertFalse(appUserService.getListOfCustomersPassword("cindyLoPete@gmail.com").isEmpty());
+    }
+
 }

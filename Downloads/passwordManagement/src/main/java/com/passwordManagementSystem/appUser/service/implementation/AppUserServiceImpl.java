@@ -4,12 +4,14 @@ import com.passwordManagementSystem.appUser.DTO.request.AppUserRequest;
 import com.passwordManagementSystem.appUser.DTO.request.AppUserUpdate;
 import com.passwordManagementSystem.appUser.DTO.response.AppUserResponse;
 import com.passwordManagementSystem.appUser.data.model.AppUser;
+import com.passwordManagementSystem.appUser.data.model.Password;
 import com.passwordManagementSystem.appUser.data.repository.AppUserRepository;
 import com.passwordManagementSystem.appUser.service.interfaces.AppUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -69,7 +71,7 @@ public class AppUserServiceImpl implements AppUserService {
     @Override
     public AppUserResponse updateUser(AppUserUpdate appUserUpdate) {
         AppUser foundUser = findAppUserById(appUserUpdate.getId());
-        if (!foundUser.isLogin())throw  new RuntimeException("You must login");
+        if (!foundUser.isLogin()) throw new RuntimeException("You must login");
         foundUser.setFirstName(appUserUpdate.getFirstName());
         foundUser.setLastName(appUserUpdate.getLastName());
         foundUser.setPhoneNumber(appUserUpdate.getPhoneNumber());
@@ -91,10 +93,21 @@ public class AppUserServiceImpl implements AppUserService {
     @Override
     public boolean logOut(String email, String password) {
         AppUser foundUser = findAppUserByEmail(email);
-        if (!foundUser.getLoginPassword().equalsIgnoreCase(password))throw new RuntimeException("Incorrect password");
-         if (!foundUser.isLogin())throw new RuntimeException("You are have to login before you can log out");
-         foundUser.setLogin(false);
-        return appUserRepository.save(foundUser).isLogin() ;
+        if (!foundUser.getLoginPassword().equalsIgnoreCase(password)) throw new RuntimeException("Incorrect password");
+        if (!foundUser.isLogin()) throw new RuntimeException("You are have to login before you can log out");
+        foundUser.setLogin(false);
+        return appUserRepository.save(foundUser).isLogin();
+    }
+
+    @Override
+    public void saveAppUser(AppUser foundUser) {
+        appUserRepository.save(foundUser);
+    }
+
+    @Override
+    public List<Password> getListOfCustomersPassword(String email) {
+        AppUser foundUser = findAppUserByEmail(email);
+        return foundUser.getListOfPassword();
     }
 
 

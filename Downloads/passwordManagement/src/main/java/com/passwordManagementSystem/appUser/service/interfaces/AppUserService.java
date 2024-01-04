@@ -4,7 +4,9 @@ import com.passwordManagementSystem.appUser.DTO.request.AppUserRequest;
 import com.passwordManagementSystem.appUser.DTO.request.AppUserUpdate;
 import com.passwordManagementSystem.appUser.DTO.response.AppUserResponse;
 import com.passwordManagementSystem.appUser.data.model.AppUser;
-import org.springframework.stereotype.Service;
+import com.passwordManagementSystem.appUser.data.model.Password;
+
+import java.util.List;
 
 
 public interface AppUserService {
@@ -23,5 +25,9 @@ public interface AppUserService {
     boolean deleteAppUserById(long appUserId);
 
     boolean logOut(String email, String password);
+
+    void saveAppUser(AppUser foundUser);
+
+    List<Password> getListOfCustomersPassword(String email);
 
 }

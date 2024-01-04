@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Setter
 @Getter
@@ -23,4 +25,11 @@ public class AppUser {
     @Column(name = "is_login",columnDefinition = "BOOLEAN")
     private boolean isLogin;
     private LocalDateTime registrationDate;
+
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true,mappedBy = "customer", fetch = FetchType.EAGER)
+    private final List<Password> listOfPassword = new ArrayList<>();
+
+
+
 }
