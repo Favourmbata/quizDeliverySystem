@@ -25,7 +25,7 @@ public class AppUser {
     private String password;
     private  boolean isLogin;
     private LocalDateTime registrationDate;
-@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "appUser")
+@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "appUser" ,fetch = FetchType.EAGER)
 private List<Contacts> listOfContacts = new ArrayList<>();
 
 }

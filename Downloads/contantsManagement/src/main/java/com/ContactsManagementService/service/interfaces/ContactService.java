@@ -5,6 +5,9 @@ import com.ContactsManagementService.dto.request.AppUserUpdate;
 import com.ContactsManagementService.dto.request.ContactRequest;
 import com.ContactsManagementService.dto.response.ContactResponse;
 
+import java.util.Collection;
+import java.util.List;
+
 
 public interface ContactService {
     ContactResponse addContact(ContactRequest contactRequest);
@@ -16,5 +19,9 @@ public interface ContactService {
     ContactResponse updateContact(AppUserUpdate appUserUpdate);
 
     boolean deleteContact(long id, String email);
+
+    List<Contacts> findAllContact(String email);
+
+
 
 }

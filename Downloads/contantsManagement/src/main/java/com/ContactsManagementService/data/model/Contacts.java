@@ -18,7 +18,6 @@ public class Contacts {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private String emailAddress;
 
     private LocalDateTime createdTime;
     @ManyToOne

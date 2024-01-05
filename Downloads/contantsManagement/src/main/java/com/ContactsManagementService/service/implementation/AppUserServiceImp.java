@@ -79,5 +79,17 @@ public class AppUserServiceImp implements AppUserService {
         return appUserManagementRepository.save(foundContact).isLogin();
     }
 
+    @Override
+    public AppUser findAppUserByEmail(String emailAddress) {
+        AppUser foundUser = appUserManagementRepository.findByEmailAddress(emailAddress);
+        if (foundUser == null)throw new RuntimeException("User Email not found");
+        return foundUser;
+    }
+
+    @Override
+    public AppUser saveAppUser(AppUser appUser) {
+        return appUserManagementRepository.save(appUser);
+    }
+
 
 }
