@@ -96,7 +96,7 @@ class PasswordServiceTest {
 
    }
   @Test
-  void deletePasswordWithEmailAndTitle(){
+  void deletePasswordWithEmailAndId(){
      assertFalse(passwordService.deletePasswordWithIdAndCustomerEmail(3,"favourmbata520@gmail.com"));
   }
 
